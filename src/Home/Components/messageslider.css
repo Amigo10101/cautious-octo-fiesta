@@ -1,0 +1,9 @@
+.carousel-control-next{
+    justify-content: end;
+    right: 5px;
+    
+}
+.carousel-control-prev{
+    justify-content: start;
+     left:5px;
+}

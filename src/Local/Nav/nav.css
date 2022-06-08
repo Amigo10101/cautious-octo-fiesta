@@ -1,0 +1,22 @@
+ .active{
+    color:rgb(116, 116, 240);
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+@import url('https://fonts.oogleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+.nav-link{
+    font-weight: 500;
+     transition: 0.1s;
+     color:#283779;  
+        font-size: 15px;
+        font-family: 'Poppins', sans-serif;    
+        
+}
+
+.nav-link:hover{
+    border-bottom: 1px solid ;
+    border-radius: 1px;
+    color: #b2dded;
+   
+}
+

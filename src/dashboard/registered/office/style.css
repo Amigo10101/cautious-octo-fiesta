@@ -1,0 +1,11 @@
+.ant-table-thead > tr > th, .ant-table-tbody > tr > td, .ant-table tfoot > tr > th, .ant-table tfoot > tr > td {
+    position: relative;
+
+    overflow-wrap: break-word;
+}
+.ant-table-tbody > tr > td > .ant-table-wrapper:only-child .ant-table, .ant-table-tbody > tr > td > .ant-table-expanded-row-fixed > .ant-table-wrapper:only-child .ant-table {
+    margin: 0px !important;
+}
+tr.ant-table-expanded-row > td, tr.ant-table-expanded-row:hover > td {
+    background: white !important;
+}   

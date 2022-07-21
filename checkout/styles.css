@@ -1,0 +1,54 @@
+
+  .Package{
+    text-align: center;
+    
+    border-radius: 20px;
+  
+  } 
+
+  .fav{
+    color: #c4e3eb;
+  }
+
+  .stepsbg{
+    
+    background-color: #82cf95;
+    border-radius: 29px 29px 0px 0px ;
+    color:white;
+    font-weight: bold;
+  }
+  .editplanbtn{
+    background-color: #82cf95;
+    color: white;
+    border: 1px solid white;
+
+  }
+  .editplanbtn:hover{
+    background-color: white;
+   color:   #82cf95; 
+  }
+  .greentxt{
+    color:   #82cf95; 
+
+  }
+  .greenbg{
+    background-color:   #82cf95; 
+
+  }
+  .roundstart{
+    border-radius: 29px 29px 0  0;
+    background-color:   #82cf95; 
+
+  }
+  .roundend{
+    border-radius: 0 0 29px 29px;
+    background-color:   #82cf95; 
+
+  }
+  .fullround{
+    border-radius: 29px;
+  }
+  .greenborder{
+    border: 2px solid #82cf95;
+
+  }

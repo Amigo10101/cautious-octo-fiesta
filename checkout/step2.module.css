@@ -1,0 +1,16 @@
+input {
+  width: 49%;
+  display: inline-block;
+}
+select {
+  width: 50%;
+  padding: 2px;
+  border: 2px solid black;
+}
+label:hover {
+  background: none;
+}
+button {
+  margin: 0px;
+  border: 1px solid white;
+}

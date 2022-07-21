@@ -1,0 +1,196 @@
+
+  
+  .AppWrapper input,
+  .AppWrapper button {
+    all: unset;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border-style: none;
+  }
+  
+  .AppWrapper {
+    
+    
+    
+  }
+  
+  @keyframes fade {
+    from {
+      opacity: 0;
+      transform: scale3D(0.95, 0.95, 0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale3D(1, 1, 1);
+    }
+  }
+  
+  .AppWrapper .Form {
+    animation: fade 200ms ease-out;
+  }
+  
+  .AppWrapper .FormGroup {
+    margin: 0 0px 20px;
+    padding: 15px;
+    border-style: none;
+    background-color: #f4f7fe;
+    will-change: opacity, transform;
+    
+    border-radius: 15px;
+  }
+  
+  .AppWrapper .FormRow {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-left: 15px;
+   
+    margin: 0 0 10px 0px;
+    padding: 0px;
+  }
+  
+  .AppWrapper .FormRow:first-child {
+    border-top: none;
+  }
+  
+  .AppWrapper .FormRowLabel {
+    all: unset;
+    width: 15%;
+    min-width: 70px;
+    padding: 0 0 10px 0px;
+    color: #c4f0ff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  @keyframes void-animation-out {
+    0%,
+    to {
+      opacity: 1;
+    }
+  }
+  .AppWrapper .FormRowInput:-webkit-autofill {
+    background-color:transparent;
+    -webkit-background-color:transparent;
+    /* Hack to hide the default webkit autofill */
+    transition: background-color 100000000s;
+    animation: 1ms void-animation-out;
+  }
+  
+  .AppWrapper .FormRowInput {
+    font-size: 14px;
+    width: 100%;
+    padding: 7px 15px 7px 15px;
+    color: rgb(93, 93, 93);
+    background-color: white;
+    animation: 1ms void-animation-out;
+    border: 1px solid #c9c9c9;
+    border-radius: 10px;
+  }
+  
+  .AppWrapper .FormRowInput::placeholder {
+    color: #4b4b4b;
+  }
+  
+  .AppWrapper .StripeElement--webkit-autofill {
+    background: transparent !important;
+  }
+  
+  .AppWrapper .StripeElement {
+    width: 100%;
+    padding: 11px 15px 11px 0;
+    margin: 0;
+    background: none;
+  }
+  
+  .AppWrapper .SubmitButton {
+    text-align: center;
+    display: block;
+    font-size: 16px;
+    width: calc(100% - 30px);
+    height: 40px;
+    margin: 0px 15px 0;
+    background-color: #2783dd;
+    box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 #ffb9f6;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 100ms ease-in-out;
+    will-change: transform, background-color, box-shadow;
+  }
+  
+  .AppWrapper .SubmitButton:active {
+    background-color: #386ca0;
+    box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 #386ca0;
+    transform: scale(0.99);
+  }
+  
+  .AppWrapper .SubmitButton.SubmitButton--error {
+    transform: translateY(15px);
+  }
+  .AppWrapper .SubmitButton.SubmitButton--error:active {
+    transform: scale(0.99) translateY(15px);
+  }
+  
+  .AppWrapper .SubmitButton:disabled {
+    opacity: 0.5;
+    cursor: default;
+    background-color: #7795f8;
+    box-shadow: none;
+  }
+  
+  .AppWrapper .ErrorMessage {
+    color: rgb(240, 73, 73);
+
+    display: block;
+
+    font-size: 13px;
+    margin-top: 0px;
+    width: 100%;
+    transform: translateY(-15px);
+    opacity: 0;
+    animation: fade 150ms ease-out;
+    animation-delay: 50ms;
+    animation-fill-mode: forwards;
+    will-change: opacity, transform;
+  }
+  
+  .AppWrapper .ErrorMessage svg {
+  
+  }
+  
+  .AppWrapper .Result {
+    margin-top: 50px;
+    text-align: center;
+    animation: fade 200ms ease-out;
+  }
+  
+  .AppWrapper .ResultTitle {
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-size: 17px;
+    text-align: center;
+  }
+  
+  .AppWrapper .ResultMessage {
+    color: #9cdbff;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 25px;
+    line-height: 1.6em;
+    text-align: center;
+  }
+  
+  .AppWrapper .ResetButton {
+    border: 0;
+    cursor: pointer;
+    background: transparent;
+  }

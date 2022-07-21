@@ -1,0 +1,36 @@
+
+.tgrey {
+  color: rgba(0, 0, 0, 0.45);
+}
+.bgrey {
+  background-color: rgba(214, 214, 214, 0.364);
+}
+.bdarkblue {
+  background-color: #002140;
+}
+body {
+  font-family: "Poppins", sans-serif !important;
+}
+.ant-layout-sider-children {
+  width: inherit;
+  position: fixed;
+}
+svg {
+  vertical-align: baseline;
+}
+.fs14 {
+  font-size: 14px;
+}
+.fs10 {
+  font-size: 11px;
+}
+.ant-steps-item-title{
+font-size: 14px !important;
+
+}
+.antdblue{
+  color:#001529;
+}
+.antlblue{
+  color:#1890ff;
+}

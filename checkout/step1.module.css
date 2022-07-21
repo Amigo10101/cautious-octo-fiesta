@@ -1,0 +1,12 @@
+
+input:checked + label {
+  background: #82cf95;
+}
+
+label:hover,
+label:active,
+input:hover + label,
+input:active + label {
+  background: #82cf95;
+  transition: 0.2s;
+}

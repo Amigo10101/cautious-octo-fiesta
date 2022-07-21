@@ -1,0 +1,15 @@
+.formselector {
+  margin: 0 15px;
+  color: gray;
+  padding: 7px 8px;
+}
+.formselector:hover {
+  color: white;
+  background-color: #0861a2;
+  border-radius: 20px;
+}
+.formselected {
+  color: white;
+  background-color: #0861a2;
+  border-radius: 20px;
+}

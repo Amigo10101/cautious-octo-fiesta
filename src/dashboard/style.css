@@ -1,0 +1,71 @@
+
+  label {
+    
+    text-align: left;
+    display: block;
+    font-size: 14px;
+    
+    
+  }
+
+  .fileinput:hover{
+    
+    color: white;
+    background: #0e101c;
+    border: 2px solid #623cea;
+  }
+  .fileinput{
+    border: 2px solid rgb(138, 140, 140);
+    border-radius: 20px;
+  }
+  .validationerror{
+    font-size: 12px;
+  }
+  .ant-steps-item-icon{
+    line-height: 28px;
+  }
+  .css-md26zr-MuiInputBase-root-MuiOutlinedInput-root{
+    font-size: 0.25rem;
+  }
+  .ant-table-thead .ant-table-cell {
+    background-color:null ;
+    color:null ;
+  }
+  .ant-table-tbody{
+    background-color: null;
+  }
+  .ant-table-row-level-0{
+background-color: #41414100;
+  }
+  .ant-table-row-indent + .ant-table-row-expand-icon{
+    background-color: rgb(166, 247, 220);
+    color: rgb(133, 133, 133);
+    font-weight: 700;
+    height: 25px;
+    width: 25px;
+    border-radius: 20px;
+    border: none;
+  }
+  .ant-table-row-expand-icon::before {
+    top: 11px;
+    right: 5px;
+    left: 5px;
+    height: 1.5px;
+}
+.ant-table-row-expand-icon::after {
+  top: 5px;
+  bottom: 5px;
+  left: 11px;
+  width: 1.5px;
+  
+}
+.MuiFormControlLabel-label{
+  font-size: 13px!important;
+}
+
+.tablehover :hover{
+  background-color: #e8fcff;
+}
+.MuiInputBase-root{
+  font-size: 13px!important;
+}

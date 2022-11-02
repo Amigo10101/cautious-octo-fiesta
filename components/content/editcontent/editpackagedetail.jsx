@@ -32,6 +32,7 @@ function Editpackaged({ id }) {
       })
       .catch(function (error) {
         console.log(error);
+        console.log("yhis", process);
       });
   }
   function savedata(xw) {

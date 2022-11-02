@@ -21,7 +21,7 @@ function Editpackaged({ id }) {
 
     var config = {
       method: "get",
-      url: API.getpackages + id,
+      url: API.getpages + id,
       headers: {},
     };
 
@@ -89,7 +89,7 @@ function Editpackaged({ id }) {
         className=" border-l rounded-2xl p-2 md:p-4 "
       >
         <div>
-          <div className="text-base  my-3">Package Name:</div>
+          <div className="text-base  my-3">Page Name:</div>
           <div>
             <input
               defaultValue={data.name}
@@ -99,7 +99,7 @@ function Editpackaged({ id }) {
             />
           </div>
         </div>
-        <div>
+        <div className="hidden">
           <div className="text-base  my-3">Package Price:</div>
           <div>
             <input

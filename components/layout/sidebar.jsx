@@ -64,13 +64,19 @@ function Sidebar({ inside }) {
           </div>
 
           <Menu theme="dark" mode="inline">
-            <Buttondiv to="/packages" value={"Packages"} />
-
-            <Buttondiv to="/addpackage" value={"Add Packages"} />
             <Buttondiv to="/contents" value={"Edit Contents"} />
-            <Buttondiv to="/images" value={"Images"} />
+            <div className="hidden">
+              <Buttondiv to="/packages" value={"Packages"} />
+              <Buttondiv to="/addpackage" value={"Add Packages"} />
+            </div>
+            <div className="p-1 bg-slate-200 m-3 rounded-xl">
+              <Buttondiv to="/images" value={"Images"} />
+              <Buttondiv to="/pages" value={"Pages"} />
+            </div>
+
+            <Buttondiv to="/add_pages" value={"Add Pages"} />
           </Menu>
-        </Sider>  
+        </Sider>
 
         <Content style={{ backgroundColor: "#f9f9f9" }}>
           <div

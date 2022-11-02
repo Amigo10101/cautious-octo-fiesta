@@ -63,6 +63,14 @@ model Packages{
   created_on String?
   last_updated_on String?
 }
+model Pages{
+  id Int @id @default(sequence())
+  name String? @unique 
+  content Json? 
+  disabled Boolean?
+  created_on String?
+  last_updated_on String?
+}
 
 model Images{
   id String @id @default(uuid())

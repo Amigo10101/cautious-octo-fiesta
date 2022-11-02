@@ -1,8 +1,8 @@
 import Head from "next/head";
-
 import Link from "next/link";
 
-export default function Home() {
+export default function Home({ dirs }) {
+  console.log(dirs);
   return (
     <div className="container m-auto px-4">
       <Head>

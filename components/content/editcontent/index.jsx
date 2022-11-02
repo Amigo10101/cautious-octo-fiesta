@@ -13,7 +13,7 @@ function Editcontent({ id }) {
 
     var config = {
       method: "get",
-      url: API.getpackages + id,
+      url: API.getpages + id,
       headers: {},
     };
 

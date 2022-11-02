@@ -1,19 +1,19 @@
-import nextConnect from "next-connect";
 import { NextApiRequest, NextApiResponse } from "next";
 import nc from "next-connect";
 import multer from "multer";
 import { randomUUID } from "crypto";
 import moment from "moment";
 import { PrismaClient } from "@prisma/client";
-import { API } from "../../../components/config/urls";
+
 var path = require("path");
 const prisma = new PrismaClient();
-const uuid = randomUUID();
+
 var filename = "";
 const upload = multer({
   storage: multer.diskStorage({
     destination: "./public/uploads",
     filename: (req, file, cb) => {
+      const uuid = randomUUID();
       cb(null, uuid + path.extname(file.originalname));
       filename = uuid + path.extname(file.originalname);
     },
@@ -41,7 +41,6 @@ apiRoute.post((req, res) => {
           data: {
             url: filename,
             created_on: moment().format(),
-            id: uuid,
           },
         })
       );

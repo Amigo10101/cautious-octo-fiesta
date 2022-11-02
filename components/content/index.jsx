@@ -22,7 +22,7 @@ function Listcontent() {
 
     var config = {
       method: "get",
-      url: API.getpackages,
+      url: API.getpages,
       headers: {},
     };
 
@@ -149,7 +149,7 @@ function Listcontent() {
 
     var config = {
       method: "post",
-      url: API.deletepackage + x2.id,
+      url: API.deletepage + x2.id,
       headers: {},
     };
 
@@ -173,7 +173,7 @@ function Listcontent() {
         <div className="flex">
           <button className="text-xs bg " block type="primary">
             <span className="text-xs bg-indigo-700 p-3 px-7 text-white font-medium rounded-md  ">
-              Add Package
+              Add Pages
             </span>
           </button>
         </div>

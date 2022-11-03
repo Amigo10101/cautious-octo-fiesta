@@ -1,62 +1,43 @@
 import { Collapse, message, Spin, Upload } from "antd";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 import Buttondiv from "../../utils/buttondiv";
 
 import { API } from "../../config/urls";
 import Imagebox from "./components/imagebox";
 
-function Editcomponent({ id }) {
-  const [data, setdata] = useState({ content: [] });
-  const [processing, setprocessing] = useState(true);
-  const [isnew, setisnew] = useState(false);
-  const [mainprocessing, setmainprocessing] = useState(false);
-  const [savedata, setsavedata] = useState([]);
-  const [newname, setnewname] = useState({ name: "" });
+function Editcomponent({ content, id, wholedata2 }) {
+  const editorRef = useRef();
+  const [editorLoaded, setEditorLoaded] = useState(false);
+  const { CKEditor, ClassicEditor } = editorRef.current || {};
+  useEffect(() => {
+    editorRef.current = {
+      CKEditor: require("@ckeditor/ckeditor5-react").CKEditor,
+      ClassicEditor: require("@ckeditor/ckeditor5-build-classic"),
+    };
+    setEditorLoaded(true);
+  }, []);
+  const [data, setdata] = useState(wholedata2.content[content]);
+  const [processing, setprocessing] = useState(false);
+  const [savedata, setsavedata] = useState(wholedata2.content[content]);
 
   const { Panel } = Collapse;
 
-  function getdata() {
-    var axios = require("axios");
+  function Indv(props) {
+    const contentdata = props.contentval;
 
-    var config = {
-      method: "get",
-      url: API.getpages + id,
-      headers: {},
-    };
+    const [processing, setprocessing] = useState(false);
 
-    axios(config)
-      .then(function (response) {
-        setdata(response.data);
-        setsavedata(response.data.content);
-        setprocessing(false);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-  useEffect(() => {
-    if (!id) {
-      return;
-    }
-    getdata();
-  }, [id]);
+    function savethedata() {
+      setprocessing(true);
 
-  function Addnew() {
-    function savenew() {
-      console.log("syc");
+      let pushdata = wholedata2.content;
+      pushdata[content] = savedata;
+      console.log(pushdata);
       var axios = require("axios");
-      let dw = savedata;
-      dw.push({
-        main_name: newname.name,
-        description: "",
-        header: "",
-        image: [],
-      });
+
       var data = JSON.stringify({
-        data: {
-          content: dw,
-        },
+        data: wholedata2,
       });
 
       var config = {
@@ -70,114 +51,23 @@ function Editcomponent({ id }) {
 
       axios(config)
         .then(function (response) {
-          setdata(response.data);
-          setsavedata(response.data.content);
-          setprocessing(false);
-          message.success("New Added");
-          newname.name = "";
-          setisnew(false);
+          message.success("Data Published");
         })
         .catch(function (error) {
           console.log(error);
-          setprocessing(false);
-        });
-    }
-    return (
-      <div className="p-3 shadow-xl rounded-2xl border">
-        <div>
-          <input
-            placeholder="Enter a Name for content "
-            className="border p-3 my-3 font-we w-full block rounded-xl font-normal "
-            type="text"
-            onChange={(xy) => {
-              newname.name = xy.target.value;
-            }}
-            defaultValue={newname.name}
-          />
-        </div>{" "}
-        <div
-          onClick={(event) => {
-            event.stopPropagation();
-          }}
-          className="cursor-pointer text-xs transition ease-in-out delay-100 bg-indigo-700 p-3  px-7 text-white font-medium rounded-md m-4 hover:bg-indigo-500 hover:scale-110"
-          type="primary"
-        >
-          <div
-            onClick={() => {
-              savenew();
-            }}
-            className=" text-center "
-          >
-            Save New
-          </div>
-        </div>
-        <div
-          onClick={(event) => {
-            event.stopPropagation();
-          }}
-          className="cursor-pointer text-xs transition ease-in-out delay-100 bg-indigo-700 p-3  px-7 text-white font-medium rounded-md m-4 hover:bg-indigo-500 hover:scale-110"
-          type="primary"
-        >
-          <div
-            onClick={() => {
-              setisnew(false);
-            }}
-            className=" text-center "
-          >
-            Cancel
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  function Indv(props) {
-    const contentdata = props.contentval;
-
-    const [processing, setprocessing] = useState(false);
-
-    function savethedata() {
-      setprocessing(true);
-      console.log("syc");
-      var axios = require("axios");
-
-      var data = JSON.stringify({
-        data: {
-          content: savedata,
-        },
-      });
-
-      var config = {
-        method: "post",
-        url: API.updatecontent + props.id,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: data,
-      };
-
-      axios(config)
-        .then(function (response) {
-          setdata(response.data);
-          setsavedata(response.data.content);
-          setprocessing(false);
-          message.success("Data Updated");
-        })
-        .catch(function (error) {
-          console.log(error);
-          setprocessing(false);
         });
     }
 
     return (
       <div className="my-4">
         <Collapse
-          style={{ borderRadius: 20, marginTop: 10 }}
           defaultActiveKey={["1"]}
+          style={{ borderRadius: 20, marginTop: 10 }}
           expandIconPosition={"end"}
           className={"shadow-xl "}
         >
           <Panel
+            key="1"
             extra={
               <button
                 onClick={(event) => {
@@ -193,7 +83,7 @@ function Editcomponent({ id }) {
               <div>
                 <input
                   onChange={(xy) => {
-                    savedata[props.index].main_name = xy.target.value;
+                    savedata.main_name = xy.target.value;
                   }}
                   defaultValue={contentdata.main_name}
                   className="border p-3 my-3 font-we w-full block rounded-xl font-normal "
@@ -204,21 +94,29 @@ function Editcomponent({ id }) {
                 />
               </div>
             }
-            key="23"
           >
-            <Collapse defaultActiveKey={["1"]} expandIconPosition={"end"}>
+            <Collapse
+              defaultActiveKey={["1", "header", "description", "image"]}
+              expandIconPosition={"end"}
+            >
               <Panel
                 style={{ padding: 0 }}
                 header={<div className="text-base font-semibold">Header</div>}
                 key="header"
               >
-                <textarea
-                  onChange={(xy) => {
-                    savedata[props.index].header = xy.target.value;
-                  }}
-                  defaultValue={contentdata.header}
-                  className="border border-neutral-600 p-3 w-full text-base font-bold"
-                />
+                {editorLoaded ? (
+                  <CKEditor
+                    editor={ClassicEditor}
+                    onChange={(event, editor) => {
+                      const data = editor.getData();
+                      savedata.header = data;
+                    }}
+                    data={contentdata.header}
+                    className="border border-neutral-600 p-3 w-full"
+                  />
+                ) : (
+                  "loading..."
+                )}
               </Panel>
               <Panel
                 style={{ padding: 0 }}
@@ -227,13 +125,19 @@ function Editcomponent({ id }) {
                 }
                 key="description"
               >
-                <textarea
-                  onChange={(xy) => {
-                    savedata[props.index].description = xy.target.value;
-                  }}
-                  defaultValue={contentdata.description}
-                  className="border border-neutral-600 p-3 w-full"
-                />
+                {editorLoaded ? (
+                  <CKEditor
+                    editor={ClassicEditor}
+                    onChange={(event, editor) => {
+                      const data = editor.getData();
+                      savedata.description = data;
+                    }}
+                    data={contentdata.description}
+                    className="border border-neutral-600 p-3 w-full"
+                  />
+                ) : (
+                  "loading..."
+                )}
               </Panel>
               <Panel
                 style={{ padding: 0 }}
@@ -243,7 +147,7 @@ function Editcomponent({ id }) {
                 <Imagebox
                   data={props}
                   value={(x) => {
-                    savedata[props.index].image = x;
+                    savedata.image = x;
                   }}
                 />
               </Panel>
@@ -261,30 +165,10 @@ function Editcomponent({ id }) {
 
   return (
     <div className="rounded-2xl shadow-2xl p-3">
+      <h1 className="text-center text-3xl font-bold">{data.main_name} Edit</h1>
       <div className="rounded-2xl shadow-2xl p-3">
-        {processing ? (
-          <Spin />
-        ) : (
-          data.content &&
-          data.content.map((x, index) => {
-            return <Indv contentval={x} id={id} index={index} key={index} />;
-          })
-        )}
-        {data.content.length === 0 ? (
-          <div className="text-center py-10">No Content</div>
-        ) : null}
+        <Indv contentval={data} />
       </div>
-      {isnew ? (
-        <div className="my-5">
-          <Addnew />
-        </div>
-      ) : (
-        <div className="p-5">
-          <div onClick={() => setisnew(true)}>
-            <Buttondiv value={"Add "} />
-          </div>
-        </div>
-      )}
     </div>
   );
 }
